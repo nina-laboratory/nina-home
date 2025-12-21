@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 	description: "Created by Pedro AZ",
 };
 
+import { Navigation } from "@/components/Navigation";
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -21,6 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${satoshi.variable} antialiased font-sans`}>
+				<Navigation />
 				{children}
 			</body>
 		</html>

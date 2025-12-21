@@ -1,80 +1,124 @@
+import { Gamepad2, Phone, Zap } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { WobbleCard } from "@/components/ui/wobble-card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+
+// App data structure
+const apps = [
+	{
+		title: "Call Nina",
+		description: "Voice interface for rapid interaction.",
+		icon: <Phone className="w-10 h-10 mb-4" />,
+	},
+	{
+		title: "Nina Controller",
+		description: "Centralized control for your agent swarm.",
+		icon: <Gamepad2 className="w-10 h-10 mb-4" />,
+	},
+	{
+		title: "Nina Fast",
+		description: "High-performance processing unit.",
+		icon: <Zap className="w-10 h-10 mb-4" />,
+	},
+];
 
 export default function Home() {
 	return (
-		<div className="flex min-h-screen flex-col items-center justify-between py-24 px-8 bg-zinc-50 text-zinc-950 font-sans">
-			{/* Header */}
-			<div className="flex flex-row items-center gap-4">
-				<Image
-					src="/nina_logo.png"
-					alt="Nina Laboratory Logo"
-					width={120}
-					height={120}
-					className="object-contain"
-				/>
-				<div className="flex flex-col">
-					<h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl leading-none">
-						Nina
+		<main className="min-h-screen bg-background flex flex-col">
+			<div className="flex-1 flex flex-col items-center justify-center p-8 gap-16">
+				{/* Intro Section */}
+				<div className="flex flex-col items-center text-center gap-6 max-w-2xl">
+					<h1 className="text-4xl font-extrabold tracking-tighter lg:text-5xl text-foreground/90">
+						Hey my name is Nina,
 					</h1>
-					<h2 className="text-2xl font-bold text-zinc-700 leading-none">
-						Laboratory
-					</h2>
-					<p className="text-xs text-zinc-500 mt-1">
-						created by{" "}
+
+					<div className="relative w-40 h-40">
+						<Image
+							src="/nina_logo.png"
+							alt="Nina Laboratory Logo"
+							fill
+							className="object-contain"
+							priority
+						/>
+					</div>
+
+					<div className="flex flex-col gap-4">
+						<p className="text-lg text-muted-foreground">My goal is</p>
+						<blockquote className="text-2xl md:text-3xl font-medium text-foreground/90 italic border-l-4 border-primary pl-6 py-2 tracking-tight">
+							&quot;Create environment for fast app development, using a multi
+							agent setup&quot;
+						</blockquote>
+					</div>
+				</div>
+
+				{/* Full Story Section */}
+				<section className="max-w-3xl text-center space-y-4">
+					<h2 className="text-3xl font-bold">Full Story</h2>
+					<p className="text-lg text-muted-foreground leading-relaxed">
+						Hey, my name is actually{" "}
 						<a
-							href="https://github.com/pedroaz/"
-							className="underline underline-offset-2 hover:text-zinc-950 transition-colors"
+							href="https://pedroaz.de"
 							target="_blank"
 							rel="noopener noreferrer"
+							className="font-medium text-foreground hover:text-primary underline underline-offset-4 transition-colors"
 						>
-							@pedroaz
+							Pedro Azevedo
 						</a>
+						, Nina is actually my&nbsp;
+						<a
+							href="/who-is-nina"
+							className="font-medium text-foreground hover:text-primary underline underline-offset-4 transition-colors"
+						>
+							dog
+						</a>
+						, but this is her lab.
+						<br />
+						<br />I was always a person that created several apps to make my
+						life easier. But after a while I always stopped using them, because
+						they were hard to add new features and to maintain.
+						<br />
+						<br />
+						This is why I created Nina, a Development setup that makes my
+						applications easier to develop, test and deploy.
+						<br />
+						<br />
+						It provides a save environment for LLMs to work, leaveraging fast
+						build, tests and iteration. Maximaxing feature deliveries with high
+						confidence.
 					</p>
-				</div>
+				</section>
+
+				{/* Apps Section */}
+				<section className="w-full max-w-5xl flex flex-col items-center gap-8">
+					<h2 className="text-3xl font-bold">My Apps</h2>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+						{apps.map((app) => (
+							<div key={app.title} className="group perspective-1000">
+								<Card className="h-full transition-all duration-300 transform group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/50 border-border/60 bg-card text-card-foreground">
+									<CardHeader>
+										<div className="text-primary">{app.icon}</div>
+										<CardTitle className="text-xl">{app.title}</CardTitle>
+									</CardHeader>
+									<CardContent>
+										<CardDescription className="text-muted-foreground">
+											{app.description}
+										</CardDescription>
+									</CardContent>
+								</Card>
+							</div>
+						))}
+					</div>
+				</section>
 			</div>
 
-			{/* Main Content - Cards */}
-			{/* <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 max-w-7xl w-full my-12">
-				<WobbleCard containerClassName="col-span-1 min-h-[300px] bg-pink-800">
-					<div className="max-w-xs">
-						<h2 className="text-left text-balance text-3xl font-bold tracking-tight text-white">
-							Call Nina
-						</h2>
-						<p className="mt-4 text-left text-lg text-zinc-100/90">
-							Direct voice communication interface.
-						</p>
-					</div>
-				</WobbleCard>
-				<WobbleCard containerClassName="col-span-1 min-h-[300px] bg-indigo-800">
-					<div className="max-w-xs">
-						<h2 className="text-left text-balance text-3xl font-bold tracking-tight text-white">
-							Nina Controller
-						</h2>
-						<p className="mt-4 text-left text-lg text-zinc-100/90">
-							Centralized management system.
-						</p>
-					</div>
-				</WobbleCard>
-				<WobbleCard containerClassName="col-span-1 min-h-[300px] bg-blue-900">
-					<div className="max-w-xs">
-						<h2 className="text-left text-balance text-3xl font-bold tracking-tight text-white">
-							Nina Fast
-						</h2>
-						<p className="mt-4 text-left text-lg text-zinc-100/90">
-							High-performance processing unit.
-						</p>
-					</div>
-				</WobbleCard>
-			</div> */}
-
-			{/* Footer */}
-			{/* <div className="flex justify-center w-full">
-				<Button size="lg" variant="outline" className="text-base px-8">
-					CV
-				</Button>
-			</div> */}
-		</div>
+			<footer className="w-full py-6 text-center text-sm text-muted-foreground">
+				Nina Laboratory &copy; {new Date().getFullYear()}
+			</footer>
+		</main>
 	);
 }
