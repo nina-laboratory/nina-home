@@ -8,3 +8,6 @@
 
 ## Format and Lint
 - Always use Biome to format and lint the code
+
+## Verification
+- Always run playwright e2e tests and biome lint at the end of implementing a feature

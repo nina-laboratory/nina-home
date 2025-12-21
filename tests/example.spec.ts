@@ -1,18 +1,24 @@
 import { expect, test } from "@playwright/test";
 
-test("has title", async ({ page }) => {
+test("homepage has correct title and content", async ({ page }) => {
 	await page.goto("/");
 
-	// Expect a title "to contain" a substring.
-	// Using a generic check since I don't know the exact title,
-	// but usually standard Next.js apps or this specific app will have some title.
-	// Checking for response status is also a good basic check.
+	// Check title
+	await expect(page).toHaveTitle(/Create Next App/); // Matches layout.tsx metadata default
 
-	// You can also check for specific text on the page
-	// await expect(page.locator('h1')).toContainText('Nina');
-});
+	// Check Header
+	await expect(
+		page.getByRole("heading", { name: "Nina Laboratory" }),
+	).toBeVisible();
+	await expect(page.getByText("created by Pedro AZ")).toBeVisible();
 
-test("homepage loads successfully", async ({ page }) => {
-	const response = await page.goto("/");
-	expect(response?.status()).toBe(200);
+	// Check Cards
+	await expect(page.getByRole("heading", { name: "Call Nina" })).toBeVisible();
+	await expect(
+		page.getByRole("heading", { name: "Nina Controller" }),
+	).toBeVisible();
+	await expect(page.getByRole("heading", { name: "Nina Fast" })).toBeVisible();
+
+	// Check Footer Button
+	await expect(page.getByRole("button", { name: "CV" })).toBeVisible();
 });
