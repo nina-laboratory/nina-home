@@ -29,15 +29,15 @@ const apps = [
 
 export default function Home() {
 	return (
-		<main className="min-h-screen bg-background flex flex-col">
-			<div className="flex-1 flex flex-col items-center justify-center p-8 gap-16">
+		<main className="min-h-screen flex flex-col bg-background">
+			<div className="flex-1 w-full max-w-screen-xl mx-auto px-4 py-8 md:px-8 md:py-16 space-y-16 md:space-y-24">
 				{/* Intro Section */}
-				<div className="flex flex-col items-center text-center gap-6 max-w-2xl">
-					<h1 className="text-4xl font-extrabold tracking-tighter lg:text-5xl text-foreground/90">
+				<section className="flex flex-col items-center text-center gap-6 pt-8 md:pt-12 max-w-3xl mx-auto">
+					<h1 className="text-4xl font-extrabold tracking-tighter lg:text-6xl text-foreground/90">
 						Hey my name is Nina,
 					</h1>
 
-					<div className="relative w-40 h-40">
+					<div className="relative w-40 h-40 md:w-56 md:h-56">
 						<Image
 							src="/nina_logo.png"
 							alt="Nina Laboratory Logo"
@@ -47,19 +47,21 @@ export default function Home() {
 						/>
 					</div>
 
-					<div className="flex flex-col gap-4">
-						<p className="text-lg text-muted-foreground">My goal is</p>
-						<blockquote className="text-2xl md:text-3xl font-medium text-foreground/90 italic border-l-4 border-primary pl-6 py-2 tracking-tight">
-							&quot;Create environment for fast app development, using a multi
-							agent setup&quot;
+					<div className="flex flex-col gap-6 items-center">
+						<p className="text-lg md:text-xl text-muted-foreground">
+							and I want to
+						</p>
+						<blockquote className="text-xl md:text-3xl font-medium text-foreground/90 italic border-l-4 border-primary pl-6 py-2 tracking-tight max-w-2xl text-left md:text-center md:border-l-0 md:border-t-0 md:pl-0">
+							&quot;Create environment for fast app development, using a agentic
+							approach&quot;
 						</blockquote>
 					</div>
-				</div>
+				</section>
 
 				{/* Full Story Section */}
-				<section className="max-w-3xl text-center space-y-4">
-					<h2 className="text-3xl font-bold">Full Story</h2>
-					<p className="text-lg text-muted-foreground leading-relaxed">
+				<section className="max-w-3xl mx-auto text-center space-y-6">
+					<h2 className="text-3xl font-bold tracking-tight">Full Story</h2>
+					<p className="text-base md:text-lg text-muted-foreground leading-relaxed text-left md:text-center px-2 md:px-0">
 						Hey, my name is actually{" "}
 						<a
 							href="https://pedroaz.de"
@@ -94,18 +96,18 @@ export default function Home() {
 				</section>
 
 				{/* Apps Section */}
-				<section className="w-full max-w-5xl flex flex-col items-center gap-8">
-					<h2 className="text-3xl font-bold">My Apps</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+				<section className="w-full max-w-5xl mx-auto flex flex-col items-center gap-8 md:gap-12 pb-12">
+					<h2 className="text-3xl font-bold tracking-tight">My Apps</h2>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
 						{apps.map((app) => (
-							<div key={app.title} className="group perspective-1000">
-								<Card className="h-full transition-all duration-300 transform group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-primary/50 border-border/60 bg-card text-card-foreground">
+							<div key={app.title} className="group h-full">
+								<Card className="h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:border-primary/50 border-border/60 bg-card text-card-foreground">
 									<CardHeader>
 										<div className="text-primary">{app.icon}</div>
 										<CardTitle className="text-xl">{app.title}</CardTitle>
 									</CardHeader>
-									<CardContent>
-										<CardDescription className="text-muted-foreground">
+									<CardContent className="flex-1">
+										<CardDescription className="text-muted-foreground text-sm md:text-base">
 											{app.description}
 										</CardDescription>
 									</CardContent>
@@ -116,8 +118,8 @@ export default function Home() {
 				</section>
 			</div>
 
-			<footer className="w-full py-6 text-center text-sm text-muted-foreground">
-				Nina Laboratory &copy; {new Date().getFullYear()}
+			<footer className="w-full py-8 text-center text-sm text-muted-foreground border-t border-border/40 bg-muted/20">
+				<p>Nina Laboratory &copy; {new Date().getFullYear()}</p>
 			</footer>
 		</main>
 	);
