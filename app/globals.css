@@ -1,26 +1,104 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Warm/Earth Theory - Rhodesian Ridgeback Vibes */
+  
+  /* Background: Sandstone / Warm Earth (More personality than Mist) */
+  --background: hsl(38 40% 92%);
+  /* Foreground: Warm Espresso (Softer than black) */
+  --foreground: hsl(30 10% 15%);
+
+  /* Cards: Cream/Off-White - Distinct from background but not harsh */
+  --card: hsl(35 30% 98%);
+  --card-foreground: hsl(30 10% 15%);
+  
+  --popover: hsl(35 30% 98%);
+  --popover-foreground: hsl(30 10% 15%);
+
+  /* Primary: Deep Ridgeback Amber / Burnt Orange */
+  --primary: hsl(28 90% 50%);
+  --primary-foreground: hsl(35 20% 96%);
+
+  /* Secondary: Earthy Clay/Sand */
+  --secondary: hsl(35 15% 85%);
+  --secondary-foreground: hsl(30 10% 15%);
+
+  /* Accent: Mintwater (Light Teal for Backgrounds/Hover) */
+  --accent: hsl(170 30% 88%);
+  /* Accent Foreground: Deep Teal (Readable text on Mintwater) */
+  --accent-foreground: hsl(170 60% 25%);
+
+  /* Muted/Borders: Warm Stone */
+  --muted: hsl(35 15% 90%);
+  --muted-foreground: hsl(30 5% 45%);
+  
+  --destructive: hsl(0 75% 55%);
+  --destructive-foreground: hsl(35 20% 96%);
+
+  --border: hsl(35 15% 85%);
+  --input: hsl(35 15% 85%);
+  --ring: hsl(28 90% 50%);
+
+  /* Radius: Clean, Professional Curves */
+  --radius: 0.75rem; 
+}
+
+.dark {
+  --background: hsl(222.2 84% 4.9%);
+  --foreground: hsl(210 40% 98%);
+  --card: hsl(222.2 84% 4.9%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(222.2 84% 4.9%);
+  --popover-foreground: hsl(210 40% 98%);
+  --primary: hsl(217.2 91.2% 59.8%);
+  --primary-foreground: hsl(222.2 47.4% 11.2%);
+  --secondary: hsl(217.2 32.6% 17.5%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --muted: hsl(217.2 32.6% 17.5%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+  --accent: hsl(217.2 32.6% 17.5%);
+  --accent-foreground: hsl(210 40% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(217.2 32.6% 17.5%);
+  --input: hsl(217.2 32.6% 17.5%);
+  --ring: hsl(224.3 76.3% 48%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
 }
