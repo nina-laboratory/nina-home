@@ -1,0 +1,18 @@
+name: nina-home
+id: ari:cloud:compass:ea6ad01b-2af2-4c30-823f-db7e7c43b840:component/a7ed47e6-8173-4a43-a41c-3e58a529f553/b463e41c-1f7a-46bc-afe2-c690b05641cd
+description: null
+configVersion: 1
+typeId: WEBSITE
+ownerId: null
+fields:
+  tier: 4
+links:
+  - name: null
+    type: REPOSITORY
+    url: https://github.com/nina-laboratory/nina-home
+relationships:
+  DEPENDS_ON: []
+labels:
+  - language:typescript
+  - source:github
+customFields: null
